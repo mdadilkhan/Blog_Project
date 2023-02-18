@@ -25,27 +25,32 @@ const Login = () => {
       setsignup({...signup,[e.target.name]:e.target.value})
   }
   
+
+
+  const signupUser=()=>{
+
+  }
+
+  
   return (
     <div className="container">
-    <div className="image" ><img src={imageURL} alt="title logo" /></div>
-      <div className="parent-card">
-
-      </div>
-      {
+      <div className="card-container">
+        <div className="image-container"> <img  className="image" src={imageURL} alt="title logo" /></div>
+     
+       {
         account === "Login" ? (
         <div className="card">
           <form action="" onSubmit={onSubmitForm}>
             <input
-            className="spacing"
+            className="input-spacing"
               type="text"
               placeholder="Enter username"
               required
-             
             />
             <br />
             <br />
             <input
-              className="spacing"
+              className="input-spacing"
               type="password"
               placeholder="Enter password"
               required
@@ -53,16 +58,16 @@ const Login = () => {
             />
             <br />
             <br />
-            <button className="spacing btn" type="submit">Login</button>
+            <button className="input-spacing btn" type="submit">Login</button>
             <h2 className="or">or</h2>
-            <button className="spacing" onClick={(e)=>{setAccount("Signup")}}>Create an account</button>
+            <button className="input-spacing" onClick={(e)=>{setAccount("Signup")}}>Create an account</button>
           </form>
         </div>
-      ) : (
+       ) : (
         <div className="card">
           <form action="" onSubmit={onSubmitForm}>
             <input
-              className="spacing"
+              className="input-spacing"
               type="text"
               placeholder="Enter name"
               required
@@ -71,7 +76,7 @@ const Login = () => {
             />
             <br /> <br />
             <input
-              className="spacing"
+              className="input-spacing"
               type="text"
               placeholder="Enter username"
               required
@@ -80,7 +85,7 @@ const Login = () => {
             />
             <br /> <br />
             <input
-              className="spacing"
+              className="input-spacing"
               type="password"
               placeholder="Enter password"
               required
@@ -88,12 +93,13 @@ const Login = () => {
               onChange={(e)=>{onInputChange(e)}}
             />
             <br /> <br />
-            <button className="spacing" type="submit">Signup</button>
+            <button className="input-spacing" type="submit" onClick={()=>{signupUser()}}>Signup</button>
           </form>
           <h2 className="or">or</h2>
-          <button className="spacing btn" onClick={(e)=>{setAccount("Login")}}>Already have an account</button>
+          <button className="input-spacing btn" onClick={(e)=>{setAccount("Login")}}>Already have an account</button>
         </div>
-      )}
+       )}
+     </div>
     </div>
   );
 };
