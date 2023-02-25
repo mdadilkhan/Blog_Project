@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import { API } from "../../service/api";
 import './Login.css'
 const Login = () => {
 
@@ -9,7 +10,7 @@ const Login = () => {
   }
   const [account, setAccount] = useState("Login");
   const [signup, setsignup] = useState(singupInitialValues)
- 
+  const [error,setError]=useState('')
 
   const imageURL =
     "https://www.sesta.it/wp-content/uploads/2021/03/logo-blog-sesta-trasparente.png";
@@ -27,9 +28,21 @@ const Login = () => {
   
 
 
-  const signupUser=()=>{
+  const signupUser= async ()=>{
+     const response = await API.userSignup(signup);
 
+
+     console.log(">>>>res",response);
+
+      if(response.isSuccess){
+        setError("")
+        setsignup(singupInitialValues);
+        setAccount('Login');
+      } else{
+          setError('something went wrong! Please try again later');
+      } 
   }
+
 
   
   return (
@@ -56,6 +69,7 @@ const Login = () => {
               required
             
             />
+            {error?<p style={{color:'red'}}>{error}</p>:""}
             <br />
             <br />
             <button className="input-spacing btn" type="submit">Login</button>
@@ -92,7 +106,9 @@ const Login = () => {
               name="password"
               onChange={(e)=>{onInputChange(e)}}
             />
+            {error?"":<p style={{color:'red'}}>{error}</p>}
             <br /> <br />
+            
             <button className="input-spacing" type="submit" onClick={()=>{signupUser()}}>Signup</button>
           </form>
           <h2 className="or">or</h2>
