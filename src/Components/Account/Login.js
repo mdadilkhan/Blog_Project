@@ -69,7 +69,7 @@ const Login = () => {
               required
             
             />
-            {error?<p style={{color:'red'}}>{error}</p>:""}
+            {error && <p style={{color:'red'}}>{error}</p>}
             <br />
             <br />
             <button className="input-spacing btn" type="submit">Login</button>
@@ -106,7 +106,7 @@ const Login = () => {
               name="password"
               onChange={(e)=>{onInputChange(e)}}
             />
-            {error?"":<p style={{color:'red'}}>{error}</p>}
+            {error && <p style={{color:'red'}}>{error}</p>}
             <br /> <br />
             
             <button className="input-spacing" type="submit" onClick={()=>{signupUser()}}>Signup</button>
