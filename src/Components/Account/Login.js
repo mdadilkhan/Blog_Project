@@ -1,5 +1,8 @@
-import { React, useState } from "react";
+import { React, useState,useContext } from "react";
 import { API } from "../../service/api";
+import { DataContext } from "../../context/DataProvider";
+//useNavigate is acustom hook of react-router-dom
+import { useNavigate } from "react-router-dom";
 import './Login.css'
 const Login = () => {
 
@@ -8,16 +11,29 @@ const Login = () => {
     username:'',
     password:''
   }
+
+  const signinInitialValues={
+    username:'',
+    password:''
+  }
+
   const [account, setAccount] = useState("Login");
-  const [signup, setsignup] = useState(singupInitialValues)
-  const [error,setError]=useState('')
+  const [signup, setsignup] = useState(singupInitialValues);
+  const [error,setError]=useState('');
+  const [login,setLogin]=useState(signinInitialValues)
+//geting the value of context api
+  const {setAccountContext}=useContext(DataContext)
+//need to initialze custom hood useNavigate
+const navigate=useNavigate();
+
 
   const imageURL =
     "https://www.sesta.it/wp-content/uploads/2021/03/logo-blog-sesta-trasparente.png";
 
   // console.log("before submit>>>>>",userName,password);
   const onSubmitForm = (e) => {
-    console.log(signup);
+    console.log("signup",signup);
+    console.log("signin",login);
     e.preventDefault();
     e.target.reset();
   };
@@ -26,6 +42,14 @@ const Login = () => {
       setsignup({...signup,[e.target.name]:e.target.value})
   }
   
+  const onValueChange=(e)=>{
+      setLogin({...login,[e.target.name]:e.target.value})
+  }
+// console.log("sign>>>",signinInitialValues);
+// console.log("state>>>",signin);
+
+
+
 
 
   const signupUser= async ()=>{
@@ -44,6 +68,27 @@ const Login = () => {
   }
 
 
+  const loginUser= async()=>{
+    const response = await API.userLogin(login)
+    console.log(response);
+    if(response.isSuccess){
+      setError('');
+      //two things comming from backend 1 access token  which is store into sessation storage
+      // 2nd is refreshToken that is going to store in sessation storage
+      sessionStorage.setItem('accessToken',`Bearer${response.data.accessToken}`);
+      sessionStorage.setItem('refreshToken',`Bearer${response.data.refreshToken}`);
+      //name and user is used in whole project like who is written the blog and who is commented in blog
+      //need to store in globally so that it is accessible every where 
+      //one wat to store in local or session storage but its not good to sotore in this storage
+      //so we are going to use context api(react method)
+      setAccountContext({username:response.data.username,name:response.data.name})
+      navigate('/'); 
+      
+    }else{
+      setError('Something went wrong! Please try again later ');
+    }
+  }
+
   
   return (
     <div className="container">
@@ -58,7 +103,10 @@ const Login = () => {
             className="input-spacing"
               type="text"
               placeholder="Enter username"
+              name='username'
+              value={login.value}
               required
+              onChange={(e)=>{onValueChange(e)}}
             />
             <br />
             <br />
@@ -66,13 +114,15 @@ const Login = () => {
               className="input-spacing"
               type="password"
               placeholder="Enter password"
+              name='password'
               required
-            
+              value={login.value}
+              onChange={(e)=>{onValueChange(e)}}
             />
             {error && <p style={{color:'red'}}>{error}</p>}
             <br />
             <br />
-            <button className="input-spacing btn" type="submit">Login</button>
+            <button className="input-spacing btn" type="submit" onClick={()=>{loginUser()}}>Login</button>
             <h2 className="or">or</h2>
             <button className="input-spacing" onClick={(e)=>{setAccount("Signup")}}>Create an account</button>
           </form>
