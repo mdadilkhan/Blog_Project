@@ -1,0 +1,22 @@
+
+/* .btn{
+    margin: 20px;
+
+} */
+.table{
+    border: 1px solid rgba(224,224,224,1);
+}
+
+/* .table .th .tr{
+    font-size: 1.2rem;
+    font-weight: 500;
+} */
+.table .th .tr .td{
+   font-size: 1.2rem;
+   color: rgb(113, 111, 111);
+}
+
+.table .tb .tr .td{
+    font-size: 1.2rem;
+    color: rgb(113, 111, 111);
+ }

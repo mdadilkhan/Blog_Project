@@ -1,0 +1,39 @@
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    background: #0082e6;
+}
+
+.navbar .header{
+    width: 35%; 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.navbar .logo{
+    display: flex;
+    padding-right: 300px;
+    color: white;
+    font-size: 3rem;
+ 
+        
+      
+}
+
+.navbar .header .anchor {
+    font-size: 1.4rem;
+    text-decoration: none;
+    font-weight: 200;
+    color: white;
+
+
+}
+label.logo{
+    font-weight: bold;
+
+} 

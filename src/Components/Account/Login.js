@@ -4,7 +4,7 @@ import { DataContext } from "../../context/DataProvider";
 //useNavigate is acustom hook of react-router-dom
 import { useNavigate } from "react-router-dom";
 import './Login.css'
-const Login = () => {
+const Login = ({isUserAuthenticated}) => {
 
   const singupInitialValues={
     name:'',
@@ -82,6 +82,7 @@ const navigate=useNavigate();
       //one wat to store in local or session storage but its not good to sotore in this storage
       //so we are going to use context api(react method)
       setAccountContext({username:response.data.username,name:response.data.name})
+      isUserAuthenticated(true);
       navigate('/'); 
       
     }else{

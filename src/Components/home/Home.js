@@ -1,20 +1,27 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import './Home.css';
-const Home=()=>{
-    return (
-        <div className='container'>
-            <h1>hello</h1>
-            <div className="header">
-                <Link to='/' >HOME</Link>
-                <Link to='/about' >ABOUT</Link>
-                <Link to='/contact' >CONTACT</Link>
-                <Link to='/login' >LOGOUT</Link>
-            </div>
+import { Grid } from "@mui/material";
+import React from "react";
+import Banner from "../banner/Banner";
+import Category from "../category/Category";
 
-        </div>
+
+const Home=()=>{
+    return(
+        <>
+            <Banner/>
+            <Grid container>
+            
+              <Grid container item lg={2} sm={2} xs={12}>
+                 <Category/>
+              </Grid>
+
+              <Grid container item lg={10} sm={10} xs={12} >
+                Post
+              </Grid>
+            </Grid>
+           
+        </>
+        
     )
 }
-
 
 export default Home;
