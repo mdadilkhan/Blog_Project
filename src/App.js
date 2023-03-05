@@ -5,7 +5,7 @@ import Home from "./Components/home/Home"
 import Header from "./Components/header/Header"
 import "./App.css";
 import DataProvider from "./context/DataProvider";
-import CreatePost from "./create/CreatePost";
+import CreatePost from "./Components/create/CreatePost";
 
 
 

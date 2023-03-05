@@ -12,7 +12,7 @@ const Login = ({isUserAuthenticated}) => {
     password:''
   }
 
-  const signinInitialValues={
+  const signinInitialValues={ 
     username:'',
     password:''
   }
