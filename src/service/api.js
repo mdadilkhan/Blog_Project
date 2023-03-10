@@ -1,6 +1,7 @@
 import axios from "axios";
-import { API_NOTIFICATION_MESSAGE,SERVICE_URLS} from "../constants/config";
 
+import { API_NOTIFICATION_MESSAGE,SERVICE_URLS} from "../constants/config";
+import { getAccessToken } from "../utils/common-utils";
 //this is backend url
 const API_URL='http://localhost:8000';
 
@@ -11,6 +12,7 @@ const axiosInstance=axios.create({
     headers:{
         "Content-Type":"application/json",
         "Accept": "application/json, form-data", 
+ 
     }
 })
 
@@ -66,7 +68,7 @@ const processResponse=(response)=>{
                 }
     }
 }
-
+ 
 
 ////////////////////////
 // if success-> returun {isSuccess:true,data:data}
@@ -112,6 +114,9 @@ for(const [key,value] of Object.entries(SERVICE_URLS)){
           url:value.url,
           data:body,
           responseType:value.responseType,
+          headers:{
+            authorization:getAccessToken()
+          },
           onUploadProgress:function(progressEvent){
             if(showUploadProgress){
                 let percentageCompleted=Math.round((progressEvent.loaded*100)/progressEvent.total);
