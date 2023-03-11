@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import './Category.css'
 import Table from '@mui/material/Table';
 import TableCell from '@mui/material/TableCell';
+import {Box} from '@mui/material'
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { TableBody } from '@mui/material';
@@ -24,10 +25,12 @@ const StyledLink=styled(Link)`
    color:rgb(113, 111, 111);
    &:hover{
     color: #6495ed;
-   
-    text-decoration: underline;
-   
+    text-decoration: underline;   
    }
+`;
+const Container=styled(Box)`
+  width: 250px;
+  height: 500px;
 `;
 
 const Category=()=>{
@@ -40,9 +43,9 @@ const Category=()=>{
         <>
             
             <StyledLink to={`/create?category=${category || ''}`} style={{textDecoration:'none'}}>
-            <StyledButton variant='contained'>Create Blog</StyledButton>
+               <StyledButton variant='contained'>Create Blog</StyledButton>
             </StyledLink>
-            
+            <Container>
             <Table className='table'>
                 <TableHead className='th'>
                     <TableRow className='tr'>
@@ -68,7 +71,8 @@ const Category=()=>{
                         })
                      }
                 </TableBody>
-            </Table>
+             </Table>
+            </Container>
         </>
     )
 }
