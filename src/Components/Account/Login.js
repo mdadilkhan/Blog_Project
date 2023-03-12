@@ -70,7 +70,7 @@ const navigate=useNavigate();
 
   const loginUser= async()=>{
     const response = await API.userLogin(login)
-    console.log(response);
+    console.log("resp0>>>",response);
     if(response.isSuccess){
       setError('');
       //two things comming from backend 1 access token  which is store into sessation storage

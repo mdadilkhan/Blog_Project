@@ -2,7 +2,7 @@ import React from 'react'
 import {Box} from '@mui/material';
 import { Typography } from '@mui/material';
 import styled from '@emotion/styled';
-
+import {addElipsis} from '../../../utils/common-utils'
 
 // const Image=styled('img')({
 //   width: '100%'
@@ -34,7 +34,8 @@ const Text = styled(Typography)`
 
 const Heading = styled(Typography)`
     font-size: 18px;
-    font-weight: 600
+    font-weight: 600;
+    word-break: break-word;
 `;
 
 const Details = styled(Typography)`
@@ -44,14 +45,17 @@ const Details = styled(Typography)`
 
 
 const Post = ({post}) => {
+const defaultPicture='https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80'
+const url=post.picture ? post.picture :defaultPicture
+
   console.log("blog post>>",post);
   return (
     <Container>
-      <Image src={post.picture} alt="blog" />
+      <Image src={url} alt="blog" />
       <Text>{post.categories}</Text>
-      <Heading>{post.title}</Heading>
+      <Heading>{addElipsis(post.title,20)}</Heading>
       <Text>{post.username}</Text>
-      <Details>{post.description}</Details>
+      <Details>{addElipsis(post.description,100)}</Details>
 
     </Container>
   )
