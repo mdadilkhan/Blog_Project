@@ -20,8 +20,10 @@ const Container = styled(Box)`
     }
 `;
 
+
 const Image = styled('img')({
     width: '100%',
+    backgroundSize: 'cover',
     objectFit: 'cover',
     borderRadius: '10px 10px 0 0',
     height: '150px'

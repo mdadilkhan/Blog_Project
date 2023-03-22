@@ -6,7 +6,8 @@ import Header from "./Components/header/Header"
 import "./App.css";
 import DataProvider from "./context/DataProvider";
 import CreatePost from "./Components/create/CreatePost";
-
+import DetailView from "./Components/details/DetailView";
+import Update from "./Components/create/Update";
 
 
 const PrivateRoute=({isAuthenticated,...props})=>{
@@ -36,6 +37,12 @@ console.log("auth>>",isAuthenticated);
              </Route>
              <Route path='/create' element={<PrivateRoute isAuthenticated={isAuthenticated}/>}>
                <Route path='/create' element={<CreatePost />}/>
+             </Route>
+             <Route path='/details/:id' element={<PrivateRoute isAuthenticated={isAuthenticated}/>}>
+               <Route path='/details/:id' element={<DetailView />}/>
+             </Route>
+             <Route path='/update/:id' element={<PrivateRoute isAuthenticated={isAuthenticated}/>}>
+               <Route path='/update/:id' element={<Update/>}/>
              </Route>
           </Routes>
         </BrowserRouter>
