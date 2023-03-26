@@ -6,7 +6,7 @@ import { API } from '../../service/api';
 
 import { Box, Typography, styled } from '@mui/material';
 import { Delete, Edit } from '@mui/icons-material';
-
+import Comments from './comments/Comments';
 
 
 
@@ -145,6 +145,7 @@ const deleteBlog = async () => {
           <Typography style={{marginLeft:'auto'}}>{new Date(post.createdDate).toDateString()}</Typography>
         </Author>
         <Description>{post.description}</Description>
+        <Comments post={post}/>
     </Container>
   )
 }

@@ -45,7 +45,7 @@ axiosInstance.interceptors.response.use(
     }
 
 )
-
+ 
 
 
 
@@ -110,10 +110,11 @@ const processError=(error)=>{
 
 const API={}
 //'showUploadProgress and' 'showDownloadProgress' is used when you have to progress bar on ui for fetching the data downloading the data
-
+console.log(API);
 
 for(const [key,value] of Object.entries(SERVICE_URLS)){
     API[key] =(body,showUploadProgress,showDownloadProgress)=>
+
        axiosInstance({
           method:value.method,
           url:value.url,

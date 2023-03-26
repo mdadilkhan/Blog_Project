@@ -31,4 +31,4 @@ console.log("acc",accountContext);
 export default DataProvider
 
 
-//now we need to wrap this compaonent on that component where we want to use this state va;ue
+//now we need to wrap this component on that component where we want to use this state value
