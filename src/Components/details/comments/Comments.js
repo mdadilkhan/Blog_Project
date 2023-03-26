@@ -1,30 +1,3 @@
-// import React from 'react'
-// import { Box } from '@mui/material'
-
-
-
-
-
-// const Comments = ({post}) => {
-
-
-//     const url = 'https://static.thenounproject.com/png/12017-200.png'
-
-//   return (
-//     <Box>
-//       <Box>
-//         <img src={url} alt="dp" />
-//       </Box>
-//       <Box></Box>
-//     </Box>
-//   )
-// }
-
-// export default Comments
-
-
-
-
 import { useState, useEffect, useContext } from 'react';
 import { Box, TextareaAutosize, Button, styled } from '@mui/material';
 
@@ -71,7 +44,7 @@ const Comments = ({ post }) => {
     useEffect(() => {
         const getData = async () => {
             const response = await API.getAllComments(post._id);
-    
+            console.log(response);
             if (response.isSuccess) {
                 setComments(response.data);
             }
@@ -89,7 +62,7 @@ const Comments = ({ post }) => {
     }
     console.log(post);
     
-
+    console.log(comment.id);
     const addComment = async() => {
       let response =  await API.newComment(comment);
         if(response.isSuccess){
@@ -120,7 +93,7 @@ const Comments = ({ post }) => {
             <Box>
                 {
                     comments && comments.length > 0 && comments.map(comment => (
-                        <Comment comment={comment} setToggle={setToggle} />
+                        <Comment  comment={comment} setToggle={setToggle} />
                     ))
                 }
             </Box>

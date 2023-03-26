@@ -30,6 +30,7 @@ const StyledDate = styled(Typography)`
 
 const DeleteIcon = styled(Delete)`
     margin-left: auto;
+
 `;
 
 const Comment = ({ comment,setToggle }) => {
@@ -38,8 +39,8 @@ const Comment = ({ comment,setToggle }) => {
     
     const removeComment = async () => {
         console.log(comment._id);
-        let response=await API.deleteComment(comment._id);
-        console.log(">>response",response);
+        let response = await API.deleteComment(comment._id);
+ 
         if(response.isSuccess){
             setToggle(prev => !prev);
         } 
