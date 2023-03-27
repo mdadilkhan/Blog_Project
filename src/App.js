@@ -8,7 +8,8 @@ import DataProvider from "./context/DataProvider";
 import CreatePost from "./Components/create/CreatePost";
 import DetailView from "./Components/details/DetailView";
 import Update from "./Components/create/Update";
-
+import About from "./Components/about/About"
+import Contact from "./Components/contact/Contact"
 
 const PrivateRoute=({isAuthenticated,...props})=>{
   return isAuthenticated ?
@@ -43,6 +44,12 @@ console.log("auth>>",isAuthenticated);
              </Route>
              <Route path='/update/:id' element={<PrivateRoute isAuthenticated={isAuthenticated}/>}>
                <Route path='/update/:id' element={<Update/>}/>
+             </Route>
+             <Route path='/about' element={<PrivateRoute isAuthenticated={isAuthenticated}/>}>
+               <Route path='/about' element={<About/>}/>
+             </Route>
+             <Route path='/contact' element={<PrivateRoute isAuthenticated={isAuthenticated}/>}>
+               <Route path='/contact' element={<Contact/>}/>
              </Route>
           </Routes>
         </BrowserRouter>
