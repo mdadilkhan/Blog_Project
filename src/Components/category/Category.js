@@ -37,7 +37,7 @@ const Category=()=>{
 
     const [searchParams]=useSearchParams();
     const category=searchParams.get('category');
-    console.log("cat>>",searchParams.get('category'));
+
 
     return(
         <>

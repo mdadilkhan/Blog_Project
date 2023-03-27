@@ -38,7 +38,7 @@ const Comment = ({ comment,setToggle }) => {
     const { accountContext } = useContext(DataContext)
     
     const removeComment = async () => {
-        console.log(comment._id);
+
         let response = await API.deleteComment(comment._id);
  
         if(response.isSuccess){

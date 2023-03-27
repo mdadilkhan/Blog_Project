@@ -30,10 +30,8 @@ const navigate=useNavigate();
   const imageURL =
     "https://www.sesta.it/wp-content/uploads/2021/03/logo-blog-sesta-trasparente.png";
 
-  // console.log("before submit>>>>>",userName,password);
+
   const onSubmitForm = (e) => {
-    console.log("signup",signup);
-    console.log("signin",login);
     e.preventDefault();
     e.target.reset();
   };
@@ -45,8 +43,7 @@ const navigate=useNavigate();
   const onValueChange=(e)=>{
       setLogin({...login,[e.target.name]:e.target.value})
   }
-// console.log("sign>>>",signinInitialValues);
-// console.log("state>>>",signin);
+
 
 
 
@@ -56,7 +53,7 @@ const navigate=useNavigate();
      const response = await API.userSignup(signup);
 
 
-     console.log(">>>>res",response);
+
 
       if(response.isSuccess){
         setError("")
@@ -70,7 +67,7 @@ const navigate=useNavigate();
 
   const loginUser= async()=>{
     const response = await API.userLogin(login)
-    console.log("resp0>>>",response);
+
     if(response.isSuccess){
       setError('');
       //two things comming from backend 1 access token  which is store into sessation storage

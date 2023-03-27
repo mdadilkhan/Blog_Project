@@ -65,13 +65,12 @@ const url=post.picture? post.picture :'https://images.unsplash.com/photo-1543128
 //in location there is search property which contains string of url u need to split the string based on your requirement
 const location=useLocation();
 const navigate=useNavigate();
-console.log("loc>>",location.search.split('='));
+
 
 const {accountContext}=useContext(DataContext);
 
-// console.log("Acc>>",DataContext);
 
-console.log("file>>",file);
+
 
 //useeffect define
 useEffect(()=>{
@@ -84,7 +83,7 @@ useEffect(()=>{
           //API call
         const response = await API.uploadFile(data)
 
-        console.log("response post",response);
+   
         post.picture=response.data //To do 
         //in this actual picture will not go url will go  
         
@@ -107,7 +106,7 @@ const savePost= async()=>{
       }
 }
 
-// console.log("post>>>",post,file);
+
 
 
   return (

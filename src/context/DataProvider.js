@@ -12,7 +12,7 @@ const DataProvider=({children})=>{
 
 
 const [accountContext,setAccountContext]=useState({username:'',name:''});
-console.log("acc",accountContext);
+
 
     //here returning data context
     //Provider is an attribute on top of DaatContext

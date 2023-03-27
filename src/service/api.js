@@ -36,7 +36,7 @@ axiosInstance.interceptors.request.use(
 
 axiosInstance.interceptors.response.use(
     function(response){
-        console.log("function>>>",response);
+     
         //you can stop global loadeer here
         return processResponse(response);
     },
@@ -59,7 +59,7 @@ axiosInstance.interceptors.response.use(
 //////////////////
 const processResponse=(response)=>{
     if(response?.status===200){
-        console.log("api page>>",response.status,response.data);
+     
       return {
               isSuccess:true,
               data:response.data
@@ -83,7 +83,7 @@ const processError=(error)=>{
     if(error.response){
         // request made and server responded with a status code other than 200
         //that falls out of the range of 2.x.x
-        console.log('ERROR IN RESPONSE',error);
+      
         return {
             isError:true,
             msg:API_NOTIFICATION_MESSAGE.responseFailure,
@@ -91,7 +91,7 @@ const processError=(error)=>{
         }
     }else if(error.request){
         // request made but no response was resieved
-        console.log('ERROR IN REQUEST',error);
+
         return {
             isError:true,
             msg:API_NOTIFICATION_MESSAGE.requestFailure,
@@ -99,7 +99,7 @@ const processError=(error)=>{
         }
     }else{
         //something happend in setting up request that trigers an error
-        console.log('ERROR IN NETWORK',error);
+
          return {
             isError:true,
             msg:API_NOTIFICATION_MESSAGE.networkError,
@@ -110,7 +110,7 @@ const processError=(error)=>{
 
 const API={}
 //'showUploadProgress and' 'showDownloadProgress' is used when you have to progress bar on ui for fetching the data downloading the data
-console.log(API);
+
 
 for(const [key,value] of Object.entries(SERVICE_URLS)){
     API[key] =(body,showUploadProgress,showDownloadProgress)=>

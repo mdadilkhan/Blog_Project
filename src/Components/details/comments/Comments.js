@@ -44,7 +44,7 @@ const Comments = ({ post }) => {
     useEffect(() => {
         const getData = async () => {
             const response = await API.getAllComments(post._id);
-            console.log(response);
+   
             if (response.isSuccess) {
                 setComments(response.data);
             }
@@ -60,9 +60,9 @@ const Comments = ({ post }) => {
             comments: e.target.value
         });
     }
-    console.log(post);
+
     
-    console.log(comment.id);
+
     const addComment = async() => {
       let response =  await API.newComment(comment);
         if(response.isSuccess){
