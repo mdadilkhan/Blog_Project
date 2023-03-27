@@ -26,7 +26,7 @@ function App() {
   
 const [isAuthenticated,isUserAuthenticated]=useState(false);
 
-console.log("auth>>",isAuthenticated);
+
   return (
     <div className="App">
       <DataProvider>
